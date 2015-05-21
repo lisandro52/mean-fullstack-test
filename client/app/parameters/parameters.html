@@ -1,0 +1,46 @@
+<div class="page-header">
+	<h1>
+		Config
+	</h1>
+	
+	<div class="form-group">
+		<form class="form-horizontal" ng-submit="createNewParameter()">
+			<input type="text" ng-model="parameterData.parameterName" class="col-sm-5"/>
+			<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>New parameter</button>
+		</form>
+	</div>
+	
+</div>
+
+<table class="table table-bordered table-striped" ng-show="params">
+	<thead>
+		<tr>
+			<th>Parameter</th>
+			<th class="col-sm-6">Values</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+		<tr ng-repeat="item in params">
+			<td>
+				<div class="form-groups">
+				<h4>{{ item.parameter }}</h4>
+				<button type="button" class="btn btn-danger btn-xs" ng-click="deleteParameter(item._id)"><span class="glyphicon glyphicon-remove"/></span></button>
+				</div>
+			</td>
+			<td class="col-sm-6">
+				<div ng-repeat="it in item.valueList">
+					<div class="form-group">
+						<input type="text" ng-model="it.value" ng-enter="addNewValue(item._id)" ng-change="modifiedInput()"/>
+						<button type="button" class="btn btn-danger btn-xs" ng-show="$last" ng-click="removeValue(item._id)"><span class="glyphicon glyphicon-remove"/></button>
+					</div>
+				</div>
+				<div class="form-group">
+					<button type="button" class="btn btn-success btn-sm" ng-click="addNewValue(item._id)">Add new value</button>
+					<button type="button" class="btn btn-primary btn-xs" ng-if="modified" ng-click="updateParam()">Update param</button>
+				</div>
+			</td>
+		</tr>
+		
+	</tbody>
+</table>
