@@ -5,7 +5,11 @@ angular.module('afTestApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
-    }];
+    },
+	{
+		'title': 'Parameters',
+		'link': '/parameters'
+	}];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
